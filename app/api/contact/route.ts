@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: 'Invalid form data', details: error.errors }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid form data', details: error.issues }, { status: 400 });
     }
     console.error('Contact API error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
